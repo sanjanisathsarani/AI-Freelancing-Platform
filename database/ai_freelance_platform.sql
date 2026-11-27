@@ -1,31 +1,6 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Nov 27, 2026 at 06:57 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `ai_freelance_platform`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ai_service`
---
 
 CREATE TABLE `ai_service` (
   `ServiceID` int(11) NOT NULL,
@@ -33,9 +8,6 @@ CREATE TABLE `ai_service` (
   `Description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `ai_service`
---
 
 INSERT INTO `ai_service` (`ServiceID`, `ServiceName`, `Description`) VALUES
 (1, 'Custom Predictive Model Development', 'End-to-end training and evaluation of custom machine learning models'),
@@ -49,11 +21,6 @@ INSERT INTO `ai_service` (`ServiceID`, `ServiceName`, `Description`) VALUES
 (9, 'Recommendation System', 'Personalized product or content recommendation engine'),
 (10, 'AI Model Deployment & Monitoring', 'Productionizing trained models with APIs, Docker, and drift alerts');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `ai_skill`
---
 
 CREATE TABLE `ai_skill` (
   `SkillID` int(11) NOT NULL,
@@ -61,9 +28,6 @@ CREATE TABLE `ai_skill` (
   `Description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `ai_skill`
---
 
 INSERT INTO `ai_skill` (`SkillID`, `SkillName`, `Description`) VALUES
 (1, 'Machine Learning', 'Supervised and unsupervised predictive modeling using Python and scikit-learn'),
@@ -77,11 +41,6 @@ INSERT INTO `ai_skill` (`SkillID`, `SkillName`, `Description`) VALUES
 (9, 'Time Series Forecasting', 'Demand forecasting, anomaly detection, and financial trend prediction'),
 (10, 'MLOps', 'Model deployment, CI/CD pipelines, monitoring, and containerization');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `assignment`
---
 
 CREATE TABLE `assignment` (
   `AssignmentID` int(11) NOT NULL,
@@ -91,9 +50,6 @@ CREATE TABLE `assignment` (
   `Status` varchar(30) NOT NULL DEFAULT 'Active'
 ) ;
 
---
--- Dumping data for table `assignment`
---
 
 INSERT INTO `assignment` (`AssignmentID`, `ProposalID`, `StartDate`, `EndDate`, `Status`) VALUES
 (1, 2, '2026-11-03', NULL, 'Active'),
@@ -107,11 +63,6 @@ INSERT INTO `assignment` (`AssignmentID`, `ProposalID`, `StartDate`, `EndDate`, 
 (9, 7, '2026-11-09', NULL, 'Active'),
 (10, 9, '2026-11-11', NULL, 'Active');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `client`
---
 
 CREATE TABLE `client` (
   `ClientID` int(11) NOT NULL,
@@ -122,9 +73,6 @@ CREATE TABLE `client` (
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ;
 
---
--- Dumping data for table `client`
---
 
 INSERT INTO `client` (`ClientID`, `ClientName`, `Email`, `Phone`, `OrganizationName`, `CreatedAt`) VALUES
 (1, 'Kasun Perera', 'kasun.perera@lankatech.lk', '+94771234501', 'LankaTech Solutions', '2026-11-27 05:23:18'),
@@ -138,11 +86,6 @@ INSERT INTO `client` (`ClientID`, `ClientName`, `Email`, `Phone`, `OrganizationN
 (9, 'Dinithi Senanayake', 'dinithi@carebot.org', '+94771234509', 'CareBot Foundation', '2026-11-27 05:23:18'),
 (10, 'Shehan Madushanka', 'shehan@smartgrid.lk', '+94771234510', 'SmartGrid Energy', '2026-11-27 05:23:18');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `freelancer`
---
 
 CREATE TABLE `freelancer` (
   `FreelancerID` int(11) NOT NULL,
@@ -153,9 +96,6 @@ CREATE TABLE `freelancer` (
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ;
 
---
--- Dumping data for table `freelancer`
---
 
 INSERT INTO `freelancer` (`FreelancerID`, `Name`, `Email`, `Phone`, `Location`, `CreatedAt`) VALUES
 (1, 'Amila Dissanayake', 'amila.ml@aistudio.lk', '+94712234501', 'Colombo', '2026-11-27 05:23:18'),
@@ -169,20 +109,12 @@ INSERT INTO `freelancer` (`FreelancerID`, `Name`, `Email`, `Phone`, `Location`, 
 (9, 'Pradeep Rathnayake', 'pradeep.mlops@aistudio.lk', '+94712234509', 'Ratnapura', '2026-11-27 05:23:18'),
 (10, 'Thilini Peiris', 'thilini.voice@aistudio.lk', '+94712234510', 'Moratuwa', '2026-11-27 05:23:18');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `freelancer_service`
---
 
 CREATE TABLE `freelancer_service` (
   `FreelancerID` int(11) NOT NULL,
   `ServiceID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `freelancer_service`
---
 
 INSERT INTO `freelancer_service` (`FreelancerID`, `ServiceID`) VALUES
 (1, 1),
@@ -196,11 +128,6 @@ INSERT INTO `freelancer_service` (`FreelancerID`, `ServiceID`) VALUES
 (9, 10),
 (10, 8);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `freelancer_skill`
---
 
 CREATE TABLE `freelancer_skill` (
   `FreelancerID` int(11) NOT NULL,
@@ -208,9 +135,6 @@ CREATE TABLE `freelancer_skill` (
   `ProficiencyLevel` varchar(30) NOT NULL DEFAULT 'Intermediate'
 ) ;
 
---
--- Dumping data for table `freelancer_skill`
---
 
 INSERT INTO `freelancer_skill` (`FreelancerID`, `SkillID`, `ProficiencyLevel`) VALUES
 (1, 1, 'Expert'),
@@ -224,11 +148,6 @@ INSERT INTO `freelancer_skill` (`FreelancerID`, `SkillID`, `ProficiencyLevel`) V
 (7, 4, 'Expert'),
 (8, 7, 'Expert');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `payment`
---
 
 CREATE TABLE `payment` (
   `PaymentID` int(11) NOT NULL,
@@ -238,9 +157,6 @@ CREATE TABLE `payment` (
   `PaymentStatus` varchar(30) NOT NULL DEFAULT 'Pending'
 ) ;
 
---
--- Dumping data for table `payment`
---
 
 INSERT INTO `payment` (`PaymentID`, `AssignmentID`, `Amount`, `PaymentDate`, `PaymentStatus`) VALUES
 (1, 2, 1375.00, '2026-10-12', 'Completed'),
@@ -254,11 +170,6 @@ INSERT INTO `payment` (`PaymentID`, `AssignmentID`, `Amount`, `PaymentDate`, `Pa
 (9, 7, 1000.00, '2026-11-06', 'Pending'),
 (10, 8, 750.00, '2026-11-08', 'Pending');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `project`
---
 
 CREATE TABLE `project` (
   `ProjectID` int(11) NOT NULL,
@@ -270,9 +181,6 @@ CREATE TABLE `project` (
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ;
 
---
--- Dumping data for table `project`
---
 
 INSERT INTO `project` (`ProjectID`, `ClientID`, `ProjectTitle`, `Description`, `Budget`, `Status`, `CreatedAt`) VALUES
 (1, 1, 'Customer Churn Prediction Model', 'Build a ML model to predict telecom and enterprise customer churn.', 1800.00, 'Open', '2026-11-27 05:23:19'),
@@ -286,12 +194,6 @@ INSERT INTO `project` (`ProjectID`, `ClientID`, `ProjectTitle`, `Description`, `
 (9, 9, 'Mental Health Helpline Triage Bot', 'Empathetic conversational triage assistant with escalation rules.', 2600.00, 'Open', '2026-11-27 05:23:19'),
 (10, 10, 'Smart Grid Load Forecasting', 'Predict peak electricity demand using historical weather and usage data.', 3200.00, 'In Progress', '2026-11-27 05:23:19');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `project_requirement`
---
-
 CREATE TABLE `project_requirement` (
   `RequirementID` int(11) NOT NULL,
   `ProjectID` int(11) NOT NULL,
@@ -299,9 +201,6 @@ CREATE TABLE `project_requirement` (
   `RequirementDetails` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `project_requirement`
---
 
 INSERT INTO `project_requirement` (`RequirementID`, `ProjectID`, `SkillID`, `RequirementDetails`) VALUES
 (1, 1, 1, 'Model accuracy above 88% with ROC-AUC evaluation report'),
@@ -315,11 +214,6 @@ INSERT INTO `project_requirement` (`RequirementID`, `ProjectID`, `SkillID`, `Req
 (9, 7, 5, 'Grounded responses using verified destination data'),
 (10, 8, 10, 'Automated weekly retraining pipeline and dashboard');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `proposal`
---
 
 CREATE TABLE `proposal` (
   `ProposalID` int(11) NOT NULL,
@@ -330,9 +224,6 @@ CREATE TABLE `proposal` (
   `Status` varchar(30) NOT NULL DEFAULT 'Pending'
 ) ;
 
---
--- Dumping data for table `proposal`
---
 
 INSERT INTO `proposal` (`ProposalID`, `ProjectID`, `FreelancerID`, `ProposalAmount`, `ProposalDate`, `Status`) VALUES
 (1, 1, 1, 1750.00, '2026-11-01', 'Pending'),
@@ -346,11 +237,6 @@ INSERT INTO `proposal` (`ProposalID`, `ProjectID`, `FreelancerID`, `ProposalAmou
 (9, 9, 8, 2500.00, '2026-11-10', 'Pending'),
 (10, 10, 9, 3100.00, '2026-11-12', 'Accepted');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `review`
---
 
 CREATE TABLE `review` (
   `ReviewID` int(11) NOT NULL,
@@ -360,10 +246,6 @@ CREATE TABLE `review` (
   `ReviewType` varchar(30) NOT NULL DEFAULT 'Client to Freelancer',
   `ReviewDate` date NOT NULL
 ) ;
-
---
--- Dumping data for table `review`
---
 
 INSERT INTO `review` (`ReviewID`, `AssignmentID`, `Rating`, `Comment`, `ReviewType`, `ReviewDate`) VALUES
 (1, 2, 5, 'Great fraud detection accuracy and clean documentation.', 'Client to Freelancer', '2026-11-16'),
@@ -377,217 +259,117 @@ INSERT INTO `review` (`ReviewID`, `AssignmentID`, `Rating`, `Comment`, `ReviewTy
 (9, 7, 5, 'Helpful feedback during model validation phase.', 'Freelancer to Client', '2026-11-15'),
 (10, 8, 4, 'Smooth communication throughout the sprint.', 'Freelancer to Client', '2026-11-18');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `ai_service`
---
 ALTER TABLE `ai_service`
   ADD PRIMARY KEY (`ServiceID`),
   ADD UNIQUE KEY `ServiceName` (`ServiceName`);
 
---
--- Indexes for table `ai_skill`
---
 ALTER TABLE `ai_skill`
   ADD PRIMARY KEY (`SkillID`),
   ADD UNIQUE KEY `SkillName` (`SkillName`);
 
---
--- Indexes for table `assignment`
---
 ALTER TABLE `assignment`
   ADD PRIMARY KEY (`AssignmentID`),
   ADD UNIQUE KEY `ProposalID` (`ProposalID`);
 
---
--- Indexes for table `client`
---
 ALTER TABLE `client`
   ADD PRIMARY KEY (`ClientID`),
   ADD UNIQUE KEY `Email` (`Email`);
 
---
--- Indexes for table `freelancer`
---
 ALTER TABLE `freelancer`
   ADD PRIMARY KEY (`FreelancerID`),
   ADD UNIQUE KEY `Email` (`Email`);
 
---
--- Indexes for table `freelancer_service`
---
 ALTER TABLE `freelancer_service`
   ADD PRIMARY KEY (`FreelancerID`,`ServiceID`),
   ADD KEY `fk_fservice_service` (`ServiceID`);
 
---
--- Indexes for table `freelancer_skill`
---
 ALTER TABLE `freelancer_skill`
   ADD PRIMARY KEY (`FreelancerID`,`SkillID`),
   ADD KEY `fk_fskill_skill` (`SkillID`);
 
---
--- Indexes for table `payment`
---
 ALTER TABLE `payment`
   ADD PRIMARY KEY (`PaymentID`),
   ADD KEY `fk_payment_assignment` (`AssignmentID`);
 
---
--- Indexes for table `project`
---
 ALTER TABLE `project`
   ADD PRIMARY KEY (`ProjectID`),
   ADD KEY `fk_project_client` (`ClientID`);
 
---
--- Indexes for table `project_requirement`
---
 ALTER TABLE `project_requirement`
   ADD PRIMARY KEY (`RequirementID`),
   ADD UNIQUE KEY `uq_project_skill_req` (`ProjectID`,`SkillID`),
   ADD KEY `fk_req_skill` (`SkillID`);
 
---
--- Indexes for table `proposal`
---
 ALTER TABLE `proposal`
   ADD PRIMARY KEY (`ProposalID`),
   ADD KEY `fk_proposal_project` (`ProjectID`),
   ADD KEY `fk_proposal_freelancer` (`FreelancerID`);
 
---
--- Indexes for table `review`
---
 ALTER TABLE `review`
   ADD PRIMARY KEY (`ReviewID`),
   ADD KEY `fk_review_assignment` (`AssignmentID`);
 
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `ai_service`
---
 ALTER TABLE `ai_service`
   MODIFY `ServiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
---
--- AUTO_INCREMENT for table `ai_skill`
---
+
 ALTER TABLE `ai_skill`
   MODIFY `SkillID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
---
--- AUTO_INCREMENT for table `assignment`
---
 ALTER TABLE `assignment`
   MODIFY `AssignmentID` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `client`
---
 ALTER TABLE `client`
   MODIFY `ClientID` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `freelancer`
---
 ALTER TABLE `freelancer`
   MODIFY `FreelancerID` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `payment`
---
 ALTER TABLE `payment`
   MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `project`
---
 ALTER TABLE `project`
   MODIFY `ProjectID` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `project_requirement`
---
 ALTER TABLE `project_requirement`
   MODIFY `RequirementID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
---
--- AUTO_INCREMENT for table `proposal`
---
 ALTER TABLE `proposal`
   MODIFY `ProposalID` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `review`
---
 ALTER TABLE `review`
   MODIFY `ReviewID` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `assignment`
---
 ALTER TABLE `assignment`
   ADD CONSTRAINT `fk_assignment_proposal` FOREIGN KEY (`ProposalID`) REFERENCES `proposal` (`ProposalID`) ON UPDATE CASCADE;
 
---
--- Constraints for table `freelancer_service`
---
 ALTER TABLE `freelancer_service`
   ADD CONSTRAINT `fk_fservice_freelancer` FOREIGN KEY (`FreelancerID`) REFERENCES `freelancer` (`FreelancerID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_fservice_service` FOREIGN KEY (`ServiceID`) REFERENCES `ai_service` (`ServiceID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
--- Constraints for table `freelancer_skill`
---
 ALTER TABLE `freelancer_skill`
   ADD CONSTRAINT `fk_fskill_freelancer` FOREIGN KEY (`FreelancerID`) REFERENCES `freelancer` (`FreelancerID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_fskill_skill` FOREIGN KEY (`SkillID`) REFERENCES `ai_skill` (`SkillID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
--- Constraints for table `payment`
---
+
 ALTER TABLE `payment`
   ADD CONSTRAINT `fk_payment_assignment` FOREIGN KEY (`AssignmentID`) REFERENCES `assignment` (`AssignmentID`) ON UPDATE CASCADE;
 
---
--- Constraints for table `project`
---
+
 ALTER TABLE `project`
   ADD CONSTRAINT `fk_project_client` FOREIGN KEY (`ClientID`) REFERENCES `client` (`ClientID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
--- Constraints for table `project_requirement`
---
+
 ALTER TABLE `project_requirement`
   ADD CONSTRAINT `fk_req_project` FOREIGN KEY (`ProjectID`) REFERENCES `project` (`ProjectID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_req_skill` FOREIGN KEY (`SkillID`) REFERENCES `ai_skill` (`SkillID`) ON UPDATE CASCADE;
 
---
--- Constraints for table `proposal`
---
+
 ALTER TABLE `proposal`
   ADD CONSTRAINT `fk_proposal_freelancer` FOREIGN KEY (`FreelancerID`) REFERENCES `freelancer` (`FreelancerID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_proposal_project` FOREIGN KEY (`ProjectID`) REFERENCES `project` (`ProjectID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
--- Constraints for table `review`
---
+
 ALTER TABLE `review`
   ADD CONSTRAINT `fk_review_assignment` FOREIGN KEY (`AssignmentID`) REFERENCES `assignment` (`AssignmentID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
